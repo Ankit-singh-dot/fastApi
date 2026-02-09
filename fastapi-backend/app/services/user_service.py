@@ -1,22 +1,22 @@
-from app.database.fake_db import user_db
+from app.database.fake_db import book_db
 
-async def create_user_service(user):
-    user_db.append(user)
-    return user
+async def create_book_services(book):
+    book_db.append(book)
+    return book
 
-async def get_all_users_service():
-    return user_db
+async def getAllBook_services():
+    return book_db
 
-
-async def get_user_service(user_id):
-    for user in user_db:
-        if user.id == user_id:
-            return user
+async def getBookById_services(book_id):
+    for book in book_db:
+        if book.id == book_id:
+            return book
     return None
 
-async def delete_user_service(user_id):
-    for user in user_db:
-        if user.id == user_id:
-            user_db.remove(user)
-            return user
+
+async def deleteBookById_services(book_id):
+    for book in book_db:
+        if book.id == book_id:
+            book_db.remove(book)
+            return book 
     return None

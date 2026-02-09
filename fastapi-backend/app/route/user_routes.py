@@ -1,28 +1,28 @@
 from fastapi import APIRouter, HTTPException
-from app.schemas.user_schema import User
+from app.schemas.user_schema import Books
 from app.services.user_service import *
 
 
-router = APIRouter(prefix="/users")
+router = APIRouter(prefix="/book")
 @router.post("/")
-async def create_user(user:User):
-    return await create_user_service(user)
+async def create_book(book:Books):
+    return await create_book_services(book)
 
 @router.get("/")
-async def get_users():
-    return await get_all_users_service()
+async def getAllBook():
+    return await getAllBook_services()
 
-@router.get("/{user_id}")
-async def get_user(user_id:int):
-    user = await get_user_service(user_id)
+@router.get("/{book_id}")
+async def get_user(book_id:int):
+    user = await getBookById_services(book_id)
     if not user:
         raise HTTPException(status_code=404, detail="User not found ")
     return  user
 
 
-@router.delete("/{user_id}")
-async def delete_user(user_id:int):
-    user = await delete_user_service(user_id)
+@router.delete("/{book_id}")
+async def delete_user(book_id:int):
+    user = await deleteBookById_services(book_id)
     if not user:
         raise HTTPException(status_code=404, detail="user not found ")
     return  {"message": "Deleted"}
