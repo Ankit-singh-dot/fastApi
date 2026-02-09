@@ -1,5 +1,6 @@
 from pydantic import BaseModel
-class User(BaseModel):
+class Books(BaseModel):
     id:int
-    name:str
-    age:int
+    title:str
+    author:str
+    publisher:str
