@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.schemas.user_schema import Books
+from app.schemas.user_schema import *
 from app.services.user_service import *
 
 
@@ -26,3 +26,18 @@ async def delete_user(book_id:int):
     if not user:
         raise HTTPException(status_code=404, detail="user not found ")
     return  {"message": "Deleted"}
+
+@router.put("/{book_id}")
+async def update_book_put(book_id: int, book: UpdateBookPut):
+    updated = await updateBook_put_services(book_id, book)
+    if not updated:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return updated
+
+
+@router.patch("/{book_id}")
+async def update_book_patch(book_id: int, book: UpdateBookPatch):
+    updated = await updateBook_patch_services(book_id, book)
+    if not updated:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return updated

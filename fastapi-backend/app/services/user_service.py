@@ -20,3 +20,29 @@ async def deleteBookById_services(book_id):
             book_db.remove(book)
             return book 
     return None
+
+
+async def updateBook_put_services(book_id, updated_book):
+    for book in book_db:
+        if book.id == book_id:
+            book.title = updated_book.title
+            book.author = updated_book.author
+            book.price = updated_book.price
+            return book
+    return None
+
+async def updateBook_patch_services(book_id, updated_book):
+    for book in book_db:
+        if book.id == book_id:
+
+            if updated_book.title is not None:
+                book.title = updated_book.title
+
+            if updated_book.author is not None:
+                book.author = updated_book.author
+
+            if updated_book.price is not None:
+                book.price = updated_book.price
+
+            return book
+    return None
