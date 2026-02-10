@@ -41,3 +41,7 @@ async def update_book_patch(book_id: int, book: UpdateBookPatch):
     if not updated:
         raise HTTPException(status_code=404, detail="Book not found")
     return updated
+
+
+
+# sql alchemy is the most popular orm for python mapping object to database tables and providing a high-level SQL language 

@@ -6,9 +6,6 @@ class Books(BaseModel):
     author:str
     publisher:str
 
-
-
-
 class UpdateBookPut(BaseModel):
     title: str
     author: str
